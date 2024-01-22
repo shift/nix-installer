@@ -12,7 +12,7 @@ jobs:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
         extra_nix_config: |
           system-features = benchmark big-parallel kvm nixos-test gccarch-skylake benchmark big-parallel kvm nixos-test
-          extra-access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          extra-access-tokens = github.com=${{ secrets.GITHUB_TOKEN }} cache.nx.section.me=${{ secrets.ATTIC_TOKEN }}
           extra-experimental-features = nix-command flakes
           extra-substituters = https://cache.nx.section.me/nx
           extra-trusted-substituters = https://cache.nx.section.me/nx

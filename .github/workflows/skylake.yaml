@@ -17,5 +17,12 @@ jobs:
           extra-substituters = https://cache.nx.section.me/nx
           extra-trusted-substituters = https://cache.nx.section.me/nx
           extra-trusted-public-keys = nx:ctJWp8Nkzf4gXc9ZUQ81dRc7BbMlUzAEerI0nod0gPw=
+    - name: Setup Attic cache
+      uses: ryanccn/attic-action@v0
+      with:
+        endpoint: ${{ secrets.ATTIC_ENDPOINT }}
+        cache: ${{ secrets.ATTIC_CACHE }}
+        token: ${{ secrets.ATTIC_TOKEN }}
+    - run: "attich watch-store nx &"
     - run: nix build .#nixosConfigurations.exampleIso.config.system.build.isoImage
     - run: nix flake check

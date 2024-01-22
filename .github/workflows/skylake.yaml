@@ -14,6 +14,8 @@ jobs:
           system-features = benchmark big-parallel kvm nixos-test gccarch-skylake benchmark big-parallel kvm nixos-test
           extra-access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
           extra-experimental-features = nix-command flakes
-          extra-substituters = https://nx.section.me
+          extra-substituters = https://nx.section.me/nx
+          extra-trusted-substituters = https://nx.section.me/nx
+          extra-trusted-public-keys = nx.section.me:ctJWp8Nkzf4gXc9ZUQ81dRc7BbMlUzAEerI0nod0gPw=
     - run: nix build .#nixosConfigurations.exampleIso.config.system.build.isoImage
     - run: nix flake check

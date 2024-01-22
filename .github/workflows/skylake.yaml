@@ -10,5 +10,10 @@ jobs:
     - uses: cachix/install-nix-action@v22
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
+        extra_nix_config: |
+          system-features = benchmark big-parallel kvm nixos-test gccarch-skylake benchmark big-parallel kvm nixos-test
+          extra-access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          extra-experimental-features = nix-command flakes
+          extra-substituters = https://nx.section.me
     - run: nix build .#nixosConfigurations.exampleIso.config.system.build.isoImage
     - run: nix flake check

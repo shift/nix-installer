@@ -31,6 +31,11 @@
                         "test_validate_transcendentals"
                       ];
                     });
+                    sphinx = pyprev.scipy.overridePythonAttrs (oldAttrs: {
+                      doCheck = false;
+                      doInstallCheck = false;
+                      dontCheck = true;
+                    });
                     scipy = pyprev.scipy.overridePythonAttrs (oldAttrs: {
                       doCheck = false;
                       doInstallCheck = false;
